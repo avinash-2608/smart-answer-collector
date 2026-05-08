@@ -1,0 +1,40 @@
+{
+  "manifest_version": 3,
+  "name": "Smart Answer Collector",
+  "version": "1.0.0",
+  "description": "Select parts of ChatGPT answers and organize them into structured exam notes.",
+  "permissions": [
+    "storage",
+    "activeTab",
+    "downloads"
+  ],
+  "host_permissions": [
+    "https://chatgpt.com/*"
+  ],
+  "action": {
+    "default_popup": "popup.html",
+    "default_title": "Smart Answer Collector"
+  },
+  "content_scripts": [
+    {
+      "matches": [
+        "https://chatgpt.com/*"
+      ],
+      "js": [
+        "content.js"
+      ],
+      "css": [
+        "styles.css"
+      ]
+    }
+  ],
+  "commands": {
+    "_execute_action": {
+      "suggested_key": {
+        "default": "Ctrl+Shift+S",
+        "mac": "Command+Shift+S"
+      },
+      "description": "Open Smart Answer Collector"
+    }
+  }
+}

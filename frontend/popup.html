@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Smart Answer Collector</title>
+  <link rel="stylesheet" href="popup.css">
+</head>
+<body>
+  <div class="app-container">
+    <header class="glass-header">
+      <div class="title-bar">
+        <h1>Smart Answer Collector</h1>
+        <div class="stats"><span id="note-count">0</span> notes</div>
+      </div>
+      <div class="search-bar">
+        <input type="text" id="search-input" placeholder="Search saved notes...">
+        <span class="search-icon">🔍</span>
+      </div>
+      <div class="actions">
+        <button id="export-txt" class="action-btn">📄 TXT</button>
+        <button id="export-pdf" class="action-btn">📕 PDF</button>
+        <button id="export-docx" class="action-btn">📘 DOCX</button>
+        <button id="clear-all" class="action-btn danger">🗑️ Clear All</button>
+      </div>
+    </header>
+
+    <main id="notes-container">
+      <div class="empty-state" id="empty-state">
+        <div class="empty-icon">📝</div>
+        <p>No notes found.</p>
+        <span>Select text on ChatGPT to start collecting!</span>
+      </div>
+    </main>
+  </div>
+  
+  <div id="toast" class="toast">Action successful!</div>
+  
+  <script src="popup.js"></script>
+</body>
+</html>
