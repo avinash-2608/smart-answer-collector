@@ -26,7 +26,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
 async function loadNotes() {
   try {
-    const response = await fetch("http://localhost:8080/notes/all");
+    const response = await fetch("http://localhost:8081/notes/all");
     if (response.ok) {
       allNotes = await response.json();
       renderNotes(allNotes);
@@ -156,7 +156,7 @@ async function deleteNote(id) {
   const numericId = parseInt(id);
   if (!isNaN(numericId) && numericId < 10000000000) { 
     try {
-      const res = await fetch(`http://localhost:8080/notes/${id}`, { method: 'DELETE' });
+      const res = await fetch(`http://localhost:8081/notes/${id}`, { method: 'DELETE' });
       if(res.ok) {
         allNotes = allNotes.filter(note => note.id !== numericId);
         renderNotes(allNotes);
@@ -179,7 +179,7 @@ async function handleClearAll() {
   
   if (confirm('Are you sure you want to delete all saved notes? This cannot be undone.')) {
     try {
-      await fetch("http://localhost:8080/notes/clear", { method: 'DELETE' });
+      await fetch("http://localhost:8081/notes/clear", { method: 'DELETE' });
       allNotes = [];
       renderNotes(allNotes);
       updateStats();
@@ -238,7 +238,7 @@ async function exportFromBackend(format) {
   }
   showToast(`Generating ${format.toUpperCase()}...`);
   try {
-    const res = await fetch(`http://localhost:8080/notes/export/${format}`, {
+    const res = await fetch(`http://localhost:8081/notes/export/${format}`, {
       method: 'POST'
     });
     if (!res.ok) throw new Error("Backend export failed");
